@@ -78,3 +78,22 @@ Arch Linux installation guide
 - exit
 - umount /mnt
 - reboot
+
+## install window manager
+- sudo pacman -S xf86-video(?) xorg xorg-xinit nitrogen picom neovim alacritty firefox base-devel
+- cp /etc/X11/xinit/xinitrc /home/jokyv/.xinitrc
+- cd
+- ls (.xinitrc file should be there)
+- nvim .xinitrc and delete the last 5 lines
+- nitrogen --restore &
+picom &
+exec bspwm
+- git clone https://aur.archlinux.org/yay-git.git
+- cd yay-git
+- makepkg -si
+- reboot
+
+- long in and press startx
+- to avoid startx command do the following:
+- nvim .bash_profile
+- [[ $(fgconsole 2>/dev/null) == 1 ]] && exec starx -- vt1
