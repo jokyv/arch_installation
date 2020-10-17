@@ -1,14 +1,17 @@
 # arch_installation
 Arch Linux installation guide
 
-## check if you have internet 
+## check if you have internet (shouldnt work)
 - ping google.com
+- if no wifi follow this: https://wiki.archlinux.org/index.php/Iwd#iwctl
 
 ## check the time is correct
 - timedatectl set-ntp true
 - timedatectl status
+- date
 
 ## partion the disk - for help press "m"
+- lsblk
 - fdisk -l
 - fdisk /dev/sda
 - g
@@ -19,81 +22,64 @@ Arch Linux installation guide
 - n 
 - 2
 - default
-- +10G
+- +20G
 - n
 - 3
 - default
 - ENTER
--t change the particition type
-- 1
-- 1
-- t
-- 2
-- 19
 - w (to write)
 
 ## make our file system
-- mkfs.fat -f32 /dev/sda1
-- mkswap /dev/sda2
-- swapon /dev/sda2
+- mkfs.fat -F32 /dev/sda1
+- mkfs.ext4 /dev/sda2
 - mkfs.ext4 /dev/sda3
 
 ## mount the particion
 - mount /dev/sda3 /mnt
 
-- pacstrap /mnt base linux linux-firmware neovim
+- pacstrap /mnt base base-devel linux linux-firmware neovim git
 - genfstab -U /mnt >> /mnt/etc/fstab
 - arch chroot /mnt
 
 - ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
 - hwclock --systohc
-- pacman -S neovim (if neovim wasnt installed)
 - nvim /etc/locale.gen
 - /en_US.UTF-8 (uncomment this line)
 - locale-gen
 
-- nvim /etc/hostname
-- arch
+- nvim /etc/hostname and type arch
 - nvim /etc/hosts
 - 127.0.0.1 localhost
-- ::1       locahost
-- 127.0.1.1 archvbox.localdomain  archvbox
 
 - passwd
 - add your password
-- useradd -m jokyv
-- passwd jokyv
-- add pass for user jokyv
-- usermod -aG wheel,audio,video,optical,storage jokyv
+- useradd -m someusername
+- passwd someusername
+- add pass for user someusername
+- usermod -aG wheel,audio,video,optical,storage someusername
 - pacman -S sudo
 - visudo
-- /%wheel ALL=(ALL) NOPASSWD: ALL (uncomment)
-- pacman -S grub efibootmgr dosfstools os-prober atools
+- /%wheel ALL=(ALL) ALL (uncomment)
+- pacman -S grub efibootmgr
 - mkdir /boot/EFI
 - mount /dev/sda1 /boot/EFI
 - grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 - grub-mkconfig -o /boot/grub/grub.cfg
-- pacman -S networkmanager git
+- pacman -S networkmanager
 - systemctl enable NetworkManager
 - exit
 - umount /mnt
 - reboot
+- log in with your someusername
+- fix internet following the: https://wiki.archlinux.org/index.php/NetworkManager
 
 ## install window manager
-- sudo pacman -S xf86-video(?) xorg xorg-xinit nitrogen picom neovim alacritty firefox base-devel
-- cp /etc/X11/xinit/xinitrc /home/jokyv/.xinitrc
+- sudo pacman -S xf86-video(?) xorg xorg-xinit nitrogen picom neovim alacritty firefox 
 - cd
-- ls (.xinitrc file should be there)
-- nvim .xinitrc and delete the last 5 lines
-- nitrogen --restore &
-picom &
-exec bspwm
+
 - git clone https://aur.archlinux.org/yay-git.git
 - cd yay-git
 - makepkg -si
 - reboot
 
-- long in and press startx
-- to avoid startx command do the following:
-- nvim .bash_profile
-- [[ $(fgconsole 2>/dev/null) == 1 ]] && exec starx -- vt1
+
