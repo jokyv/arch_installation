@@ -2,15 +2,18 @@
 Arch Linux installation guide
 
 ### check if you have internet (shouldnt work)
+```
 - ping google.com
 - if no wifi follow this: https://wiki.archlinux.org/index.php/Iwd#iwctl
-
+```
 ### check the time is correct
+```
 - timedatectl set-ntp true
 - timedatectl status
 - date
-
-## partion the disk - for help press "m"
+```
+### partion the disk - for help press "m"
+```
 - lsblk
 - fdisk -l
 - fdisk /dev/sda
@@ -29,13 +32,15 @@ Arch Linux installation guide
 - ENTER
 - w (to write)
 - lsblk
-
-## make our file system
+```
+### make our file system
+```
 - mkfs.fat -F32 /dev/sda1
 - mkfs.ext4 /dev/sda2
 - mkfs.ext4 /dev/sda3
-
-## mount the particion
+```
+### mount the particion
+```
 - mount /dev/sda2 /mnt
 - mkdir /mnt/home
 - mount /dev/sda3 /mnt/home
@@ -81,8 +86,9 @@ Arch Linux installation guide
 - reboot
 - log in with your someusername
 - fix internet following the: https://wiki.archlinux.org/index.php/NetworkManager
-
-## swap file
+```
+### swap file
+```
 - sudo dd if=/dev/zero of=/swapfile bs=1024 count=10485760
 - sudo chmod 600 /swapfile
 - sudo mkswap /swapfile
@@ -91,15 +97,17 @@ Arch Linux installation guide
 - sudo nvim /etc/fstab
 - # swapfile
 - /swapfile none swap sw 0 0
-
-## install window manager
+```
+### install window manager
+```
 - sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox 
 - cd
-
-## setup yay
+```
+### setup yay
+```
 - git clone https://aur.archlinux.org/yay-git.git
 - cd yay-git
 - makepkg -si
 - reboot
-
+```
 
