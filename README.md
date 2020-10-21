@@ -97,6 +97,11 @@ Arch Linux installation guide
 - sudo nvim /etc/fstab
 - # swapfile
 - /swapfile none swap sw 0 0
+
+- # if you want to remove a swap file
+- sudo swapoff -v /swapfile
+- sudo rm /swapfile
+- delete the swapfile line in fstab file
 ```
 ### install window manager
 ```
