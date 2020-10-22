@@ -103,9 +103,9 @@ Arch Linux installation guide
 - sudo rm /swapfile
 - delete the swapfile line in fstab file
 ```
-### install window manager
+### install essential applications
 ```
-- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox 
+- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot
 - cd
 ```
 ### setup yay
