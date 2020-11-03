@@ -89,6 +89,7 @@ Arch Linux installation guide
 ```
 ### swap file
 ```
+# always create a swap file as RAM can cache more data, put it on home directory.
 - sudo dd if=/dev/zero of=/swapfile bs=1024 count=10485760
 - sudo chmod 600 /swapfile
 - sudo mkswap /swapfile
