@@ -106,7 +106,7 @@ Arch Linux installation guide
 ```
 ### install essential applications
 ```
-- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot
+- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot cronie
 - cd
 ```
 ### setup yay
