@@ -48,6 +48,8 @@ Arch Linux installation notes
 ```
 ### run the basic_config script
 ```
+chmod +x basic_config.sh
+./basic_config.sh
 ```
 ### Below are old notes to configure manually
 ```
