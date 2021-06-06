@@ -33,7 +33,7 @@ Arch Linux installation notes
 - w (to write)
 - lsblk
 ```
-### make our file system
+### format the partitions
 ```
 - mkfs.fat -F32 /dev/sda1
 - mkfs.ext4 /dev/sda2
@@ -46,18 +46,22 @@ Arch Linux installation notes
 - mount /dev/sda3 /mnt/home
 - lsblk
 ```
+### Install the base packages into /mnt
+```
+- pacstrap /mnt base base-devel linux linux-firmware git neovim amd-ucode
+- Generate the FSTAB file with "genfstab -U /mnt >> /mnt/etc/FSTAB"
+- cat /mnt/etc/FSTAB
+```
 ### run the basic_config script
 ```
-chmod +x basic_config.sh
-./basic_config.sh
+- Chroot in with "arch-chroot /mnt /bin/bash"
+- Download the git repository with git clone https://github.com/jokyv/arch_installation
+- cd arch_installation
+- chmod +x basic_config.sh
+- run with ./basic_config.sh
 ```
 ### Below are old notes to configure manually
 ```
-- pacstrap /mnt base base-devel linux linux-firmware neovim git
-- genfstab -U /mnt >> /mnt/etc/fstab
-- cat /mnt/etc/fstab
-- arch-chroot /mnt /bin/bash
-
 - ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
 - hwclock --systohc --utc
 - nvim /etc/locale.gen
