@@ -1,5 +1,5 @@
 # arch_installation
-Arch Linux installation guide
+Arch Linux installation notes
 
 ### check if you have internet (shouldnt work)
 ```
@@ -12,7 +12,7 @@ Arch Linux installation guide
 - timedatectl status
 - date
 ```
-### partion the disk - for help press "m"
+### partion the disk using fdisk - for help press "m"
 ```
 - lsblk
 - fdisk -l
@@ -45,7 +45,12 @@ Arch Linux installation guide
 - mkdir /mnt/home
 - mount /dev/sda3 /mnt/home
 - lsblk
-
+```
+### run the basic_config script
+```
+```
+### Below are old notes to configure manually
+```
 - pacstrap /mnt base base-devel linux linux-firmware neovim git
 - genfstab -U /mnt >> /mnt/etc/fstab
 - cat /mnt/etc/fstab
@@ -87,7 +92,7 @@ Arch Linux installation guide
 - log in with your someusername
 - fix internet following the: https://wiki.archlinux.org/index.php/NetworkManager
 ```
-### swap file
+### create a swap file
 ```
 # always create a swap file as RAM can cache more data, put it on home directory.
 - sudo dd if=/dev/zero of=/swapfile bs=1024 count=10485760
@@ -104,16 +109,15 @@ Arch Linux installation guide
 - sudo rm /swapfile
 - delete the swapfile line in fstab file
 ```
-### install essential applications
+### install essential applications (the below should be on another script?)
 ```
 - sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot cronie
 - cd
-```
-### setup yay
-```
-- git clone https://aur.archlinux.org/yay-git.git
-- cd yay-git
-- makepkg -si
+- git clone https://aur.archlinux.org/paru.git
+- cd paru
+= makepkg -si
+- cd ..
+- rm -rf paru
 - reboot
 ```
 
