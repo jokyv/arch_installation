@@ -1,7 +1,6 @@
-# arch_installation
-Arch Linux installation notes
+# arch installation
 
-### check if you have internet (shouldnt work)
+### first check if you have internet (shouldnt work)
 ```
 - ping google.com
 - if no wifi follow this: https://wiki.archlinux.org/index.php/Iwd#iwctl
@@ -46,7 +45,7 @@ Arch Linux installation notes
 - mount /dev/sda3 /mnt/home
 - lsblk
 ```
-### Install the base packages into /mnt
+### Install the absolute basic packages into /mnt
 ```
 - pacstrap /mnt base base-devel linux linux-firmware git neovim amd-ucode
 - Generate the FSTAB file with "genfstab -U /mnt >> /mnt/etc/FSTAB"
@@ -55,12 +54,14 @@ Arch Linux installation notes
 ### run the basic_config script
 ```
 - Chroot in with "arch-chroot /mnt /bin/bash"
-- Download the git repository with git clone https://github.com/jokyv/arch_installation
+- Download the git repository into your HOME with:
+- git clone https://github.com/jokyv/arch_installation
 - cd arch_installation
 - chmod +x basic_config.sh
-- run with ./basic_config.sh
+- run script as: ./basic_config.sh
 ```
-### Below are old notes to configure manually
+#### Below are old notes to configure manually
+#### merge those into basic_config.sh if anything is missing
 ```
 - ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
 - hwclock --systohc --utc
@@ -98,7 +99,7 @@ Arch Linux installation notes
 - log in with your someusername
 - fix internet following the: https://wiki.archlinux.org/index.php/NetworkManager
 ```
-### create a swap file
+### create a swap file *add it into the beginning instead*
 ```
 # always create a swap file as RAM can cache more data, put it on home directory.
 - sudo dd if=/dev/zero of=/swapfile bs=1024 count=10485760
@@ -115,9 +116,9 @@ Arch Linux installation notes
 - sudo rm /swapfile
 - delete the swapfile line in fstab file
 ```
-### install essential applications (the below should be on another script?)
+### install essential applications like window manager and useful applications
 ```
-- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot cronie
+- sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot cronie fzf tmux
 - cd
 - git clone https://aur.archlinux.org/paru.git
 - cd paru
@@ -126,4 +127,6 @@ Arch Linux installation notes
 - rm -rf paru
 - reboot
 ```
+### install all Rust applications i am currently using
+- fd, rg, procs, bat, exa, starship, alacritty
 
