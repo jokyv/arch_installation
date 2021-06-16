@@ -16,7 +16,63 @@ echo root:password | chpasswd
 # You can add xorg to the installation packages, I usually add it at the DE or WM install script
 # You can remove the tlp package if you are installing on a desktop or vm
 
-pacman -S grub efibootmgr networkmanager network-manager-applet dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb nfs-utils inetutils dnsutils bluez bluez-utils cups hplip alsa-utils pipewire pipewire-alsa pipewire-pulse pipewire-jack bash-completion openssh rsync reflector acpi acpi_call tlp virt-manager qemu qemu-arch-extra edk2-ovmf bridge-utils dnsmasq vde2 openbsd-netcat iptables-nft ipset firewalld flatpak sof-firmware nss-mdns acpid os-prober ntfs-3g terminus-font
+# or can do 
+pacman=(
+acpi 
+acpi_call 
+acpid 
+alsa-utils 
+avahi 
+base-devel 
+bash-completion 
+bluez 
+bluez-utils 
+bridge-utils 
+cups 
+dialog 
+dnsmasq 
+dnsutils 
+dosfstools 
+edk2-ovmf 
+efibootmgr 
+firewalld 
+flatpak 
+grub 
+gvfs 
+gvfs-smb 
+hplip 
+inetutils 
+ipset 
+iptables-nft 
+linux-headers 
+mtools 
+network-manager-applet 
+networkmanager 
+nfs-utils 
+nss-mdns 
+ntfs-3g 
+openbsd-netcat 
+openssh 
+os-prober 
+pipewire 
+pipewire-alsa 
+pipewire-jack 
+pipewire-pulse 
+qemu 
+qemu-arch-extra 
+reflector 
+rsync 
+sof-firmware 
+terminus-font
+tlp 
+vde2 
+virt-manager 
+wpa_supplicant 
+xdg-user-dirs 
+xdg-utils 
+    )
+
+sudo pacman -S ${pacman[@]}
 
 # add optional packages without confirming with yes
 # pacman -S --noconfirm xf86-video-amdgpu
