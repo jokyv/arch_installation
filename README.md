@@ -1,6 +1,11 @@
 # arch installation
 
-### first check if you have internet (shouldnt work)
+### Download Arch iso from the following link:
+https://archlinux.org/download/
+### Use the below command to write the iso into a usb stick
+
+### first check if you have internet
+- should not work unless you use wire internet 
 ```
 - ping google.com
 - if no wifi follow this: https://wiki.archlinux.org/index.php/Iwd#iwctl
@@ -53,12 +58,12 @@
 ```
 ### run the basic_config script
 ```
-- Chroot in with "arch-chroot /mnt /bin/bash"
+- Chroot into /mnt with "arch-chroot /mnt /bin/bash"
 - Download the git repository into your HOME with:
 - git clone https://github.com/jokyv/arch_installation
 - cd arch_installation
 - chmod +x basic_config.sh
-- run script as: ./basic_config.sh
+- run script as: "./basic_config.sh"
 ```
 #### Below are old notes to configure manually
 #### merge those into basic_config.sh if anything is missing
