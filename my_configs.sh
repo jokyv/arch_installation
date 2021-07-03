@@ -21,9 +21,18 @@ git config --global user.email johnkyvetos@gmail.com
 # store password for 8 hours only
 git config --global credential.helper 'cache --timeout=28800'
 
+# add paru instead of yay
+echo " "
+echo "...installing paru"
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+cd ..
+rm -rf paru
+
 cd ~
 echo " "
-echo "..starting cloning dotfiles and creating symlinks"
+echo "...starting cloning dotfiles and creating symlinks"
 git clone https://github.com/jokyv/dotfiles.git ~/dot
 # for the HOME folder
 ln -s ~/dot/bash/.bashrc ~/.bashrc
@@ -35,7 +44,7 @@ ln -s ~/dot/alacritty ~/.config/
 ln -s ~/dot/bspwm ~/.config/
 ln -s ~/dot/polybar ~/.config/
 ln -s ~/dot/sxhkd ~/.config/
-echo "Lets source all the config files"
+echo "...lets source all the config files"
 source ~/dot/bash/.bashrc
 
 # fonts
@@ -74,7 +83,7 @@ git clone https://github.com/jokyv/my_wiki.git ~/repos/
 # wallpapers and pics
 cd ~
 echo " "
-echo "::Wallpapers and pics"
+echo ":: Wallpapers and pics"
 echo "...creating pics folder and adding my wallpapers"
 mkdir pics
 git clone https://github.com/jokyv/wallpapers ~/pics/
