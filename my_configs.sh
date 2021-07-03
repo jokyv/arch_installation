@@ -74,6 +74,7 @@ git clone https://github.com/jokyv/my_wiki.git ~/repos/
 # wallpapers and pics
 cd ~
 echo " "
+echo "::Wallpapers and pics"
 echo "...creating pics folder and adding my wallpapers"
 mkdir pics
 git clone https://github.com/jokyv/wallpapers ~/pics/
@@ -82,7 +83,7 @@ echo "add work repos manuall!"
 echo "press [ENTER] key to continue..."
 read y
 
-
+# Miniconda
 echo " "
 echo ":: Miniconda "
 echo "...downloading miniconda and installing it"
@@ -104,4 +105,4 @@ nvim ipython_config.py
 echo "uncomment autoindent and make it false"
 
 echo " "
-echo "all configurations are now done!"
+echo "...all configurations are now done!"
