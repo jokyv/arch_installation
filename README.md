@@ -133,5 +133,5 @@ https://archlinux.org/download/
 - reboot
 ```
 ### install all Rust applications i am currently using
-- fd, rg, procs, bat, exa, starship, alacritty
+- fd, rg, procs, bat, exa, starship, alacritty, tokei
 
