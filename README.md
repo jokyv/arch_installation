@@ -1,8 +1,15 @@
-# arch installation
+# Arch installation
 
-### Download Arch iso from the following link:
+### Download Arch ISO from the below link:
 https://archlinux.org/download/
-### Use the below command to write the iso into a usb stick
+
+### Use the below command to write the ISO into a USB drive.
+
+#### instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
+
+```
+dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
+````
 
 ### first check if you have internet
 - should not work unless you use wire internet 
@@ -10,13 +17,15 @@ https://archlinux.org/download/
 - ping google.com
 - if no wifi follow this: https://wiki.archlinux.org/index.php/Iwd#iwctl
 ```
+
 ### check the time is correct
 ```
 - timedatectl set-ntp true
 - timedatectl status
 - date
 ```
-### partion the disk using fdisk - for help press "m"
+
+### partition the disk using fdisk - for help press "m"
 ```
 - lsblk
 - fdisk -l
@@ -37,25 +46,29 @@ https://archlinux.org/download/
 - w (to write)
 - lsblk
 ```
+
 ### format the partitions
 ```
 - mkfs.fat -F32 /dev/sda1
 - mkfs.ext4 /dev/sda2
 - mkfs.ext4 /dev/sda3
 ```
-### mount the particion
+
+### mount the partitions
 ```
 - mount /dev/sda2 /mnt
 - mkdir /mnt/home
 - mount /dev/sda3 /mnt/home
 - lsblk
 ```
+
 ### Install the absolute basic packages into /mnt
 ```
 - pacstrap /mnt base base-devel linux linux-firmware git neovim amd-ucode
 - Generate the FSTAB file with "genfstab -U /mnt >> /mnt/etc/FSTAB"
 - cat /mnt/etc/FSTAB
 ```
+
 ### run the basic_config script
 ```
 - Chroot into /mnt with "arch-chroot /mnt /bin/bash"
@@ -65,6 +78,7 @@ https://archlinux.org/download/
 - chmod +x basic_config.sh
 - run script as: "./basic_config.sh"
 ```
+
 #### Below are old notes to configure manually
 #### merge those into basic_config.sh if anything is missing
 ```
@@ -104,6 +118,7 @@ https://archlinux.org/download/
 - log in with your someusername
 - fix internet following the: https://wiki.archlinux.org/index.php/NetworkManager
 ```
+
 ### create a swap file *add it into the beginning instead*
 ```
 # always create a swap file as RAM can cache more data, put it on home directory.
@@ -121,6 +136,7 @@ https://archlinux.org/download/
 - sudo rm /swapfile
 - delete the swapfile line in fstab file
 ```
+
 ### install essential applications like window manager and useful applications
 ```
 - sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom neovim alacritty firefox feh flameshot cronie fzf tmux
@@ -132,6 +148,7 @@ https://archlinux.org/download/
 - rm -rf paru
 - reboot
 ```
+
 ### install all Rust applications i am currently using
 - fd, rg, procs, bat, exa, starship, alacritty, tokei
 
