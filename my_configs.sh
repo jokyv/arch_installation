@@ -7,21 +7,27 @@ set -o errexit    # exit when command fails
 
 cd ~
 
-# please note:
+# TODOs for v1.0
 # bash history file moved
 # git config file moved
 # dot file should be updated as well
-
+# global fd ignore file is in .config/fd
+# global git ignore file
+# /etc/pacman.conf save it to your dotfiles
 # shouldnt i symblink the gitconfig file that i saved? 
+
 # configure git
+cd ~
 echo " "
-echo "...starting configuring git"
+echo "...starting configurations"
+echo "...configuring git"
 git config --global user.name "John Kyvetos"
 git config --global user.email johnkyvetos@gmail.com
 # store password for 8 hours only
 git config --global credential.helper 'cache --timeout=28800'
 
-# add paru instead of yay
+# install paru, polybar and i3lock
+cd ~
 echo " "
 echo "...installing paru"
 git clone https://aur.archlinux.org/paru.git
@@ -29,7 +35,9 @@ cd paru
 makepkg -si
 cd ..
 rm -rf paru
+paru polybar i3lock
 
+# all the .config files
 cd ~
 echo " "
 echo "...starting cloning dotfiles and creating symlinks"
@@ -37,7 +45,7 @@ git clone https://github.com/jokyv/dotfiles.git ~/dot
 # for the HOME folder
 ln -s ~/dot/bash/.bashrc ~/.bashrc
 ln -s ~/dot/bash/.bash_profile ~/.bash_profile
-ln -s ~/dot/.xinitrc ~/.xinitrc # this has moved as well
+ln -s ~/dot/.xinitrc ~/.xinitrc # TODO this has moved as well
 # for the .config/ folder
 ln -s ~/dot/tmux/ ~/.config/
 ln -s ~/dot/alacritty ~/.config/
@@ -47,13 +55,14 @@ ln -s ~/dot/sxhkd ~/.config/
 echo "...lets source all the config files"
 source ~/dot/bash/.bashrc
 
-# fonts
+# symlink your favourtie fonts
 cd ~
 echo " "
 echo "...Symlink my favourite fonts to ~/.local/share/"
 ln -s ~/dot/fonts/ ~/.local/share/
 
 # nvim configurations
+# TODO change to lunarvim
 cd ~
 echo " "
 echo "...adding configurations and plugins for neovim "
@@ -74,11 +83,13 @@ fi
 # Change extension names to the extensions you need
 npm install coc-json coc-python coc-snippets coc-vimlsp coc-pairs coc-jedi coc-explorer coc-sh --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
+# personal projects
 cd ~
 echo " "
-echo "...adding all personal repos"
+echo "...adding all personal/private repos"
 mkdir repos
 git clone https://github.com/jokyv/my_wiki.git ~/repos/
+git clone https://github.com/jokyv/notes.git ~/repos/
 
 # wallpapers and pics
 cd ~
@@ -88,7 +99,7 @@ echo "...creating pics folder and adding my wallpapers"
 mkdir pics
 git clone https://github.com/jokyv/wallpapers ~/pics/
 echo " "
-echo "add work repos manuall!"
+echo "add work repos manually if you want"
 echo "press [ENTER] key to continue..."
 read y
 

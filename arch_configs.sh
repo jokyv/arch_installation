@@ -5,7 +5,7 @@ hwclock --systohc --utc
 sed -i '177s/.//' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
-# change the keymap for the keyboard
+## change the keymap for the keyboard
 #echo "KEYMAP=de_CH-latin1" >> /etc/vconsole.conf
 echo "arch" >> /etc/hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
@@ -70,12 +70,16 @@ virt-manager
 wpa_supplicant 
 xdg-user-dirs 
 xdg-utils 
-    )
+#sudo
+#visudo
+#cronie
+)
 
 sudo pacman -S ${pacman[@]}
 
-# add optional packages without confirming with yes
+# AMD GPU
 # pacman -S --noconfirm xf86-video-amdgpu
+# NVIDIA GPU
 pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
@@ -93,7 +97,7 @@ systemctl enable libvirtd
 systemctl enable firewalld
 systemctl enable acpid
 
-useradd -m jokyv
+useradd -m jokyv # FIXME does it require to add user to wheel?
 echo jokyv:password | chpasswd
 usermod -aG libvirt jokyv
 
