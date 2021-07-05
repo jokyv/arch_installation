@@ -8,23 +8,11 @@ set -o errexit    # exit when command fails
 cd ~
 
 # TODOs for v1.0
-# bash history file moved
-# git config file moved
-# dot file should be updated as well
-# global fd ignore file is in .config/fd
-# global git ignore file
+# delete git history and create a new one for v1.0
 # /etc/pacman.conf save it to your dotfiles
-# shouldnt i symblink the gitconfig file that i saved? 
-
-# configure git
-cd ~
-echo " "
-echo "...starting configurations"
-echo "...configuring git"
-git config --global user.name "John Kyvetos"
-git config --global user.email johnkyvetos@gmail.com
-# store password for 8 hours only
-git config --global credential.helper 'cache --timeout=28800'
+# move to lunarvim
+# add code to push ssh key to git - go to one_day file
+# where to put user-dirs.dirs
 
 # install paru, polybar and i3lock
 cd ~
@@ -37,21 +25,27 @@ cd ..
 rm -rf paru
 paru polybar i3lock
 
-# all the .config files
+# ssh key to github so i can download dotfiles
+
+# cloning dotfiles and creating symlinks
 cd ~
 echo " "
 echo "...starting cloning dotfiles and creating symlinks"
 git clone https://github.com/jokyv/dotfiles.git ~/dot
 # for the HOME folder
-ln -s ~/dot/bash/.bashrc ~/.bashrc
-ln -s ~/dot/bash/.bash_profile ~/.bash_profile
-ln -s ~/dot/.xinitrc ~/.xinitrc # TODO this has moved as well
+ln -s ~/dot/bash/.bashrc ~/
+ln -s ~/dot/bash/.bash_profile ~/
+ln -s ~/dot/.profile ~/
 # for the .config/ folder
-ln -s ~/dot/tmux/ ~/.config/
+ln -s ~/dot/X11 ~/.config/
 ln -s ~/dot/alacritty ~/.config/
 ln -s ~/dot/bspwm ~/.config/
 ln -s ~/dot/polybar ~/.config/
 ln -s ~/dot/sxhkd ~/.config/
+ln -s ~/dot/fd ~/.config/
+ln -s ~/dot/git ~/.config/
+ln -s ~/dot/starship.toml ~/.config/
+
 echo "...lets source all the config files"
 source ~/dot/bash/.bashrc
 
@@ -62,31 +56,17 @@ echo "...Symlink my favourite fonts to ~/.local/share/"
 ln -s ~/dot/fonts/ ~/.local/share/
 
 # nvim configurations
-# TODO change to lunarvim
 cd ~
 echo " "
-echo "...adding configurations and plugins for neovim "
-git clone https://github.com/jokyv/nvim.git ~/.config/
+echo "...installing lubarvim"
 sudo pacman -S python-pip npm xsel
 pip install pynvim
 sudo npm i -g neovim
-echo "CoC configuration and modules installation"
-echo "requies neovim and node installed"
-# Install neovim extensions
-mkdir -p ~/.config/coc/extensions
-cd ~/.config/coc/extensions
-if [ ! -f package.json ]
-then
-  echo '{"dependencies":{}}'> package.json
-fi
-
-# Change extension names to the extensions you need
-npm install coc-json coc-python coc-snippets coc-vimlsp coc-pairs coc-jedi coc-explorer coc-sh --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 # personal projects
 cd ~
 echo " "
-echo "...adding all personal/private repos"
+echo "...adding all personal-private repos"
 mkdir repos
 git clone https://github.com/jokyv/my_wiki.git ~/repos/
 git clone https://github.com/jokyv/notes.git ~/repos/
@@ -102,6 +82,11 @@ echo " "
 echo "add work repos manually if you want"
 echo "press [ENTER] key to continue..."
 read y
+
+## OPTIONAL
+
+# TMUX
+ln -s ~/dot/tmux/ ~/.config/
 
 # Miniconda
 echo " "
