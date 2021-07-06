@@ -90,6 +90,18 @@ sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
 
+### install more essential applications (wm and xorg)
+```
+cd ~
+sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom alacritty firefox feh flameshot cronie fzf tmux bspwm sxhkd
+exit
+umount -a
+reboot
+```
+
+### If no internet after rebooting
+- follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
+
 ### Download help installation repo into your HOME directory:
 ```
 git clone https://github.com/jokyv/arch_installation
@@ -98,21 +110,12 @@ chmod +x basic_config.sh
 ./basic_config.sh
 ```
 
-### If no internet after rebooting
-- follow this: https://wiki.archlinux.org/index.php/NetworkManager
-
-### install more essential applications
-```
-cd
-sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom alacritty firefox feh flameshot cronie fzf tmux bspwm sxhkd
-exit
-umount -a
-reboot
-```
-
-### install all Rust applications i am currently using
+### install all Rust applications that i use
 ```
 # install rustup and rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install fd ripgrep procs bat exa starship alacritty tokei
+```
 
+#### todo for after v1.0
+- add options for MAC and UBUNTU 
