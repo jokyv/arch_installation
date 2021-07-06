@@ -114,7 +114,7 @@ chmod +x basic_config.sh
 ```
 # install rustup and rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install fd ripgrep procs bat exa starship alacritty tokei
+cargo install fd ripgrep procs bat exa starship alacritty tokei cargo-update?
 ```
 
 #### todo for after v1.0
