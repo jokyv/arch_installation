@@ -97,7 +97,8 @@ systemctl enable libvirtd
 systemctl enable firewalld
 systemctl enable acpid
 
-useradd -m jokyv # FIXME does it require to add user to wheel?
+#  FIXME: does it require to add user to wheel?
+useradd -m jokyv
 echo jokyv:password | chpasswd
 usermod -aG libvirt jokyv
 
