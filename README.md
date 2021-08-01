@@ -1,5 +1,10 @@
 # Arch installation
 
+## TODOs for v1.0
+- delete git history and create a new one for v1.0
+- /etc/pacman.conf save it to your dotfiles
+- where to put user-dirs.dirs
+
 ### Download Arch ISO from the below link:
 https://archlinux.org/download/
 
@@ -110,12 +115,21 @@ chmod +x basic_config.sh
 ./basic_config.sh
 ```
 
-### install all Rust applications that i use
+### install all python libraries using pip
+```
+pip_packages = (
+pandas
+numpy
+matplotlib
+tqdm
+scikit-learn
+)
+pip install $pip_packages
+```
+
+### install all Rust applications using cargo
 ```
 # install rustup and rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 cargo install fd ripgrep procs bat exa starship alacritty tokei cargo-update?
 ```
-
-#### todo for after v1.0
-- add options for MAC and UBUNTU 

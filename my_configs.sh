@@ -1,19 +1,14 @@
 #!/bin/bash
+
 # a simple script that takes care of:
 # creating basic folders, important symlinks and configurations
 
-set -o nounset    # error when referencing undefined variable
-set -o errexit    # exit when command fails
+set -o nounset # error when referencing undefined variable
+set -o errexit # exit when command fail
 
 cd ~
 # folder for all git repos
 mkdir repos
-
-# TODOs for v1.0
-# delete git history and create a new one for v1.0
-# /etc/pacman.conf save it to your dotfiles
-# move to lunarvim
-# where to put user-dirs.dirs
 
 # install paru, polybar and i3lock
 cd ~
@@ -28,7 +23,6 @@ paru polybar i3lock
 
 # ssh key to github so i can download dotfiles
 echo " " 
-sudo pacman -S openssh git # FIXME this should already be installed
 ssh-keygen -t  ecdsa -b 521
 echo " "
 echo "Add this public key, to you're GitHub account before continuing"
@@ -60,7 +54,7 @@ ln -s ~/dot/git ~/.config/
 ln -s ~/dot/starship.toml ~/.config/
 
 echo "...lets source all the config files"
-source ~/dot/bash/.bashrc
+source ~/.bashrc
 
 # symlink your favourtie fonts
 cd ~
@@ -68,11 +62,11 @@ echo " "
 echo "...symlink my favourite fonts to ~/.local/share/"
 ln -s ~/dot/fonts/ ~/.local/share/
 
-# nvim installation and configuration
+# lunarvim installation and configuration
 cd ~
 echo " "
-echo "...installing lubarvim"
-bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/stable/utils/installer/install.sh)
+echo "...installing lunarvim"
+bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
 
 # personal projects
 cd ~
@@ -85,7 +79,7 @@ git clone git@github.com:jokyv/notes.git ~/repos/
 cd ~
 echo " "
 echo ":: Wallpapers and pics"
-echo "...creating pics folder and adding my wallpapers"
+echo "...creating pics folder and adding my wallpapers repo"
 mkdir pics
 git clone git@github.com:jokyv/wallpapers.git ~/pics/
 echo " "
@@ -96,29 +90,28 @@ read y
 ## OPTIONAL INSTALLATIONS
 
 # TMUX
+echo " "
+echo ":: Tmux"
 ln -s ~/dot/tmux/ ~/.config/
 
-# Miniconda
-echo " "
-echo ":: Miniconda "
-echo "...downloading miniconda and installing it"
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-sh ~/miniconda.sh -b -f -p $HOME/mconda
-rm ~/miniconda.sh
-# TODO do i need this? already including the mconda path with my bashrc script
-conda init bash
-echo "...cloning my packages into mconda lib"
-echo "pres [ENTER] key to continue"
-read y
-git clone git@github.com:jokyv/jokyv.git ~/mconda/lib/python3.9/site-packages/
-git clone git@github.com:jokyv/jokyv_ml.git ~/mconda/lib/python3.9/site-packages/
-echo "...ipython configurations"
-cd ~/.ipython/profile_default
-ipython profile create
-cd profile_default
-nvim ipython_config.py
-# FIXME how to do this with nvim?
-echo "uncomment autoindent and make it false"
+# # Miniconda
+# echo " "
+# echo ":: Miniconda "
+# echo "...downloading miniconda and installing it"
+# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+# sh ~/miniconda.sh -b -f -p $HOME/mconda
+# rm ~/miniconda.sh
+# echo "...cloning my packages into mconda lib"
+# echo "pres [ENTER] key to continue"
+# read y
+# git clone git@github.com:jokyv/jokyv.git ~/mconda/lib/python3.9/site-packages/
+# git clone git@github.com:jokyv/jokyv_ml.git ~/mconda/lib/python3.9/site-packages/
+# echo "...ipython configurations"
+# cd ~/.ipython/profile_default
+# ipython profile create
+# cd profile_default
+# nvim ipython_config.py
+# echo "uncomment autoindent and make it false"
 
 echo " "
 echo "...all configurations are now done!"
