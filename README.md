@@ -1,9 +1,8 @@
 # Arch installation
 
-## TODOs for v1.0
-- delete git history and create a new one for v1.0
-- /etc/pacman.conf save it to your dotfiles
-- where to put user-dirs.dirs
+### TODOs for v1.0
+- /etc/pacman.conf save it to your dotfiles!
+- where to put user-dirs.dirs?
 
 ### Download Arch ISO from the below link:
 https://archlinux.org/download/
