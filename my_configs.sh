@@ -29,7 +29,7 @@ echo "Add this public key, to you're GitHub account before continuing"
 echo " "
 cat ~/.ssh/id_ecdsa.pub
 echo " "
-echo "Press [ENTER] key when ready to continue"
+echo "Press [ENTER] when you are ready to continue"
 read y
 
 # cloning dotfiles and creating symlinks
@@ -66,7 +66,7 @@ ln -s ~/dot/fonts/ ~/.local/share/
 cd ~
 echo " "
 echo "...installing lunarvim"
-bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/master/utils/installer/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/lunarvim/rolling/utils/installer/install.sh)
 
 # personal projects
 cd ~

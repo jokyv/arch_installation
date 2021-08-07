@@ -22,7 +22,8 @@ ping google.com
 iwctl
 device list
 station wlan0 connect <wifi name>
-pacman -Syy
+exit
+pacman -Sy
 ```
 
 ### check the time is correct
@@ -44,30 +45,46 @@ WRITE - ENTER - yes
 QUIT - ENTER
 lsblk
 ```
+#### OR
+```
+lsblk
+gdisk /dev/nvme0n1
+n - ENTER - ENTER +250M - ef00 # for EFI
+n - ENTER - ENTER +16G - 8200 # from swap partition
+n - ENTER - ENTER +20G - ENTER # for root partition
+n - ENTER - ENTER - ENTER - ENTER # home partition
+w # to write the changes
+y # to confirm with the changes
+lsblk
+```
 
 ### format the partitions
 ```
-mkfs.fat -F32 /dev/nvme0n1p1
-mkfs.ext4 /dev/nvme0n1p2
-mkfs.ext4 /dev/nvme0n1p3
+mkfs.vfat /dev/nvme0n1p1 - ENTER OR
+mkfs.fat -F32 /dev/nvme0n1p1 - ENTER
+mkswap /dev/nvme0n1p2 - ENTER
+swapon /dev/nvme0n1p2 - ENTER
+mkfs.ext4 /dev/nvme0n1p3 - ENTER
+mkfs.ext4 /dev/nvme0n1p4 - ENTER
+lsblk
 ```
 
 ### mount the partitions
 ```
-mount /dev/nvme0n1p2 /mnt
+mount /dev/nvme0n1p3 /mnt
 mkdir -p /mnt/boot/efi
-mount /dev/nvme0n1p1 /mnt/boot/efi
 mkdir /mnt/home
-mount /dev/nvme0n1p3 /mnt/home
+mount /dev/nvme0n1p1 /mnt/boot/efi
+mount /dev/nvme0n1p4 /mnt/home
 lsblk
 ```
 
 ### Install the absolute basic packages
 ```
-pacstrap /mnt base base-devel linux linux-firmware git neovim amd-ucode
+pacstrap /mnt base linux linux-firmware git neovim amd-ucode
 # Generate the FSTAB file with 
-genfstab -U /mnt >> /mnt/etc/FSTAB
-cat /mnt/etc/FSTAB
+genfstab -U /mnt >> /mnt/etc/fstab
+cat /mnt/etc/fstab
 ```
 
 ### arch chroot
@@ -76,7 +93,42 @@ cat /mnt/etc/FSTAB
 arch-chroot /mnt /bin/bash
 ```
 
-### create a swap file
+### Download help installation repo into your HOME directory:
+```
+git clone https://github.com/jokyv/arch_installation
+cd arch_installation
+ls -l # check if you need to chmod the scripts
+chmod +x arch_helper.sh
+./arch_helper.sh
+```
+
+### Final steps
+```
+exit
+umount -a
+reboot
+```
+
+### If no internet after rebooting
+- follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
+
+### install rust via rustup and all rust apps via cargo
+```
+./rust_helper.sh
+```
+
+### install xorg, wm, useful apps and configurations
+```
+cd arch_installation
+./my_configs.sh
+```
+
+### install all python libraries using pip
+```
+./python_helper.sh
+```
+
+#### How to create a swap file manually
 ```
 # always create a swap file as RAM can cache more data, put it in home directory.
 sudo dd if=/dev/zero of=/swapfile bs=1M count=1024000 status=progress
@@ -94,41 +146,3 @@ sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
 
-### install more essential applications (wm and xorg)
-```
-cd ~
-sudo pacman -S pulseaudio pulseaudio-alsa xorg xorg-xinit xorg-server nitrogen picom alacritty firefox feh flameshot cronie fzf tmux bspwm sxhkd
-exit
-umount -a
-reboot
-```
-
-### If no internet after rebooting
-- follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
-
-### Download help installation repo into your HOME directory:
-```
-git clone https://github.com/jokyv/arch_installation
-cd arch_installation
-chmod +x basic_config.sh
-./basic_config.sh
-```
-
-### install all python libraries using pip
-```
-pip_packages = (
-pandas
-numpy
-matplotlib
-tqdm
-scikit-learn
-)
-pip install $pip_packages
-```
-
-### install all Rust applications using cargo
-```
-# install rustup and rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install fd ripgrep procs bat exa starship alacritty tokei cargo-update?
-```

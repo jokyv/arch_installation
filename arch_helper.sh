@@ -26,7 +26,6 @@ basic_configs() {
 
 install_packages() {
     pacman=(
-    #cronie
     #sudo
     #visudo
     acpi 
@@ -34,11 +33,13 @@ install_packages() {
     acpid 
     alsa-utils 
     avahi 
-    base-devel 
     bash-completion 
+    base-devel     
     bluez 
     bluez-utils 
     bridge-utils 
+    bspwm 
+    cronie 
     cups 
     dialog 
     dnsmasq 
@@ -46,44 +47,53 @@ install_packages() {
     dosfstools 
     edk2-ovmf 
     efibootmgr 
+    feh 
+    firefox 
     firewalld 
+    flameshot 
     flatpak 
+    fzf 
     grub 
     gvfs 
     gvfs-smb 
     hplip 
     inetutils 
     ipset 
-    iptables-nft 
     linux-headers 
     mtools 
     network-manager-applet 
     networkmanager 
     nfs-utils 
-    nss-mdns 
-    ntfs-3g
+    nitrogen 
     nodejs
     npm
+    nss-mdns 
+    ntfs-3g
     openbsd-netcat 
     openssh 
     os-prober 
-    pipewire 
-    pipewire-alsa 
-    pipewire-jack 
-    pipewire-pulse 
+    picom 
+    pulseaudio 
+    pulseaudio-alsa 
+    python
     python-pip
     qemu 
     qemu-arch-extra 
     reflector 
     rsync 
     sof-firmware 
+    sxhkd
     terminus-font
     tlp 
+    tmux 
     vde2 
     virt-manager 
     wpa_supplicant 
     xdg-user-dirs 
     xdg-utils 
+    xorg 
+    xorg-server 
+    xorg-xinit 
     )
 
     sudo pacman -S ${pacman[@]}
@@ -91,7 +101,7 @@ install_packages() {
     # AMD GPU
     # pacman -S --noconfirm xf86-video-amdgpu
     # NVIDIA GPU
-    pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
+    sudo pacman -S --noconfirm nvidia nvidia-utils nvidia-settings
 }
 
 grub_config() {
@@ -115,7 +125,8 @@ enable_systems() {
 
 add_user() {
     useradd -m jokyv
-    echo jokyv:password | chpasswd
+    passwd jokyv
+    #echo jokyv:password | chpasswd
     usermod -aG libvirt jokyv
     echo "jokyv ALL=(ALL) ALL" >> /etc/sudoers.d/jokyv
 }
