@@ -117,15 +117,15 @@ reboot
 ./rust_helper.sh
 ```
 
+### install all python libraries using pip
+```
+./python_helper.sh
+
+```
 ### install xorg, wm, useful apps and configurations
 ```
 cd arch_installation
 ./my_configs.sh
-```
-
-### install all python libraries using pip
-```
-./python_helper.sh
 ```
 
 #### How to create a swap file manually
