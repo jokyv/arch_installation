@@ -59,6 +59,7 @@ install_packages() {
     hplip 
     inetutils 
     ipset 
+    lazygit
     linux-headers 
     mtools 
     network-manager-applet 
