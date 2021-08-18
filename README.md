@@ -4,17 +4,17 @@
 - /etc/pacman.conf save it to your dotfiles!
 - where to put user-dirs.dirs?
 
-### Download Arch ISO from the below link:
+#### Download Arch ISO from the below link:
 https://archlinux.org/download/
 
-### Use the below command to write the ISO into a USB drive.
-#### Instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
+#### Use the below command to write the ISO into a USB drive.
+- Instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
 
 ```
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 ````
 
-### first check if you have internet
+#### First check if you have internet
 - internet should not work unless you use wire 
 - if no internet follow instructions on this [link](https://wiki.archlinux.org/index.php/Iwd#iwctl)
 ```
@@ -26,14 +26,14 @@ exit
 pacman -Sy
 ```
 
-### check the time is correct
+#### Check the time is correct
 ```
 timedatectl set-ntp true
 timedatectl status
 date
 ```
 
-#### partition the disk using cgdisk.
+#### Partition the disk using cgdisk.
 ```
 lsblk
 cgdisk /dev/nvme0n1
@@ -46,7 +46,7 @@ QUIT - ENTER
 lsblk
 ```
 
-#### partition the disk using gdisk
+#### Partition the disk using gdisk
 ```
 lsblk
 gdisk /dev/nvme0n1
@@ -59,7 +59,7 @@ y # to confirm with the changes
 lsblk
 ```
 
-### format the partitions
+#### Format the partitions
 ```
 mkfs.vfat /dev/nvme0n1p1 - ENTER
 # OR
@@ -73,7 +73,7 @@ mkfs.ext4 /dev/nvme0n1p4 - ENTER
 lsblk
 ```
 
-### mount the partitions
+#### Mount the partitions
 ```
 mount /dev/nvme0n1p3 /mnt # installation directory
 mkdir -p /mnt/boot/efi
@@ -83,23 +83,23 @@ mount /dev/nvme0n1p4 /mnt/home
 lsblk
 ```
 
-### Install the absolute basic packages
+#### Install the absolute basic packages
 ```
 pacstrap /mnt base linux linux-firmware git neovim amd-ucode
 ```
 
-### Generate the FSTAB file with 
+#### Generate the FSTAB file with 
 ```
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 ```
 
-### chroot into /mnt
+#### Then chroot into /mnt
 ```
 arch-chroot /mnt /bin/bash
 ```
 
-### Download help installation repo into your HOME directory:
+#### Download help installation repo into your HOME directory:
 ```
 cd ~
 git clone git@github.com:jokyv/arch_installation.git
@@ -109,35 +109,35 @@ chmod +x arch_helper.sh
 ./arch_helper.sh
 ```
 
-### Final steps
+#### Final steps
 ```
 exit
 umount -a
 reboot
 ```
 
-### If no internet after rebooting
+#### If no internet after rebooting
 - follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
 
-### install rust via rustup and all rust apps via cargo
+#### install rust via rustup and all rust apps via cargo
 ```
 cd arch_installation
 ./rust_helper.sh
 ```
 
-### install all python libraries using pip
+#### Install all python libraries using pip
 ```
 cd arch_installation
 ./python_helper.sh
 
 ```
-### install xorg, bspwm, sxhkd, polybar and useful apps and configurations
+#### Install xorg, bspwm, sxhkd, polybar and useful apps and configurations
 ```
 cd arch_installation
 ./my_configs.sh
 ```
 
-#### How to create a swap file manually
+##### How to create a swap file manually
 ```
 # always create a swap file as RAM can cache more data, put it in home directory.
 sudo dd if=/dev/zero of=/swapfile bs=1M count=1024000 status=progress
