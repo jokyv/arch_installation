@@ -33,7 +33,7 @@ timedatectl status
 date
 ```
 
-### partition the disk using cgdisk.
+#### partition the disk using cgdisk.
 ```
 lsblk
 cgdisk /dev/nvme0n1
@@ -45,13 +45,14 @@ WRITE - ENTER - yes
 QUIT - ENTER
 lsblk
 ```
-#### OR
+
+#### partition the disk using gdisk
 ```
 lsblk
 gdisk /dev/nvme0n1
-n - ENTER - ENTER +250M - ef00 # for EFI
-n - ENTER - ENTER +16G - 8200 # from swap partition
-n - ENTER - ENTER +20G - ENTER # for root partition
+n - ENTER - ENTER - +250M - ef00  # for EFI
+n - ENTER - ENTER -  +16G - 8200  # for swap partition
+n - ENTER - ENTER -  +20G - ENTER # for root partition
 n - ENTER - ENTER - ENTER - ENTER # home partition
 w # to write the changes
 y # to confirm with the changes
@@ -60,10 +61,13 @@ lsblk
 
 ### format the partitions
 ```
-mkfs.vfat /dev/nvme0n1p1 - ENTER OR
+mkfs.vfat /dev/nvme0n1p1 - ENTER
+# OR
 mkfs.fat -F32 /dev/nvme0n1p1 - ENTER
+
 mkswap /dev/nvme0n1p2 - ENTER
 swapon /dev/nvme0n1p2 - ENTER
+
 mkfs.ext4 /dev/nvme0n1p3 - ENTER
 mkfs.ext4 /dev/nvme0n1p4 - ENTER
 lsblk
@@ -71,7 +75,7 @@ lsblk
 
 ### mount the partitions
 ```
-mount /dev/nvme0n1p3 /mnt
+mount /dev/nvme0n1p3 /mnt # installation directory
 mkdir -p /mnt/boot/efi
 mkdir /mnt/home
 mount /dev/nvme0n1p1 /mnt/boot/efi
@@ -82,20 +86,23 @@ lsblk
 ### Install the absolute basic packages
 ```
 pacstrap /mnt base linux linux-firmware git neovim amd-ucode
-# Generate the FSTAB file with 
+```
+
+### Generate the FSTAB file with 
+```
 genfstab -U /mnt >> /mnt/etc/fstab
 cat /mnt/etc/fstab
 ```
 
-### arch chroot
+### chroot into /mnt
 ```
-# Chroot into /mnt with...
 arch-chroot /mnt /bin/bash
 ```
 
 ### Download help installation repo into your HOME directory:
 ```
-git clone https://github.com/jokyv/arch_installation
+cd ~
+git clone git@github.com:jokyv/arch_installation.git
 cd arch_installation
 ls -l # check if you need to chmod the scripts
 chmod +x arch_helper.sh
@@ -114,15 +121,17 @@ reboot
 
 ### install rust via rustup and all rust apps via cargo
 ```
+cd arch_installation
 ./rust_helper.sh
 ```
 
 ### install all python libraries using pip
 ```
+cd arch_installation
 ./python_helper.sh
 
 ```
-### install xorg, wm, useful apps and configurations
+### install xorg, bspwm, sxhkd, polybar and useful apps and configurations
 ```
 cd arch_installation
 ./my_configs.sh
@@ -145,4 +154,3 @@ sudo swapoff -v /swapfile
 sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
-
