@@ -119,7 +119,7 @@ reboot
 #### If no internet after rebooting
 - follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
 
-#### install rust via rustup and all rust apps via cargo
+#### Install rust via rustup and all rust apps via cargo
 ```
 cd arch_installation
 ./rust_helper.sh
