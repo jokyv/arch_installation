@@ -36,10 +36,8 @@ read y
 cd ~
 echo " "
 echo "...starting cloning dotfiles and creating symlinks"
-# repos or on the HOME?
-git clone git@github.com:jokyv/dotfiles ~/dot
-git clone git@github.com:jokyv/dotfiles ~/repos/dot
 # for the HOME folder
+git clone git@github.com:jokyv/dotfiles ~/dot
 ln -s ~/dot/bash/.bashrc ~/
 ln -s ~/dot/bash/.bash_profile ~/
 ln -s ~/dot/.profile ~/
@@ -55,7 +53,7 @@ ln -s ~/dot/starship.toml ~/.config/
 ln -s ~/dot/lvim ~/.config/
 
 echo "...lets source all the config files"
-source ~/.bashrc
+source ~/.profile
 
 # symlink your favourtie fonts
 cd ~
