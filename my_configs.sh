@@ -52,6 +52,7 @@ ln -s ~/dot/sxhkd ~/.config/
 ln -s ~/dot/fd ~/.config/
 ln -s ~/dot/git ~/.config/
 ln -s ~/dot/starship.toml ~/.config/
+ln -s ~/dot/lvim ~/.config/
 
 echo "...lets source all the config files"
 source ~/.bashrc
