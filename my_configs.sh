@@ -10,15 +10,10 @@ cd ~
 # folder for all git repos
 mkdir repos
 
-# install paru, polybar and i3lock
+# install polybar and i3lock
 cd ~
 echo " "
-echo "...installing paru"
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-cd ..
-rm -rf paru
+echo "...installing polybar i3lock"
 paru polybar i3lock
 
 # ssh key to github so i can download dotfiles

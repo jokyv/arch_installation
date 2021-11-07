@@ -46,7 +46,8 @@ QUIT - ENTER
 lsblk
 ```
 
-#### Partition the disk using gdisk
+#### Partition the disk using gdisk 
+- preferred method
 ```
 lsblk
 gdisk /dev/nvme0n1
@@ -99,6 +100,7 @@ cat /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 ```
 
+### WARNING, i need to generate the public key!
 #### Download help installation repo into your HOME directory:
 ```
 cd ~
@@ -113,6 +115,7 @@ chmod +x arch_helper.sh
 ```
 exit
 umount -a
+umount -R /mnt
 reboot
 ```
 
