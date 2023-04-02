@@ -11,8 +11,6 @@ ipython
 jedi
 matplotlib
 matplotlib-inline
-neovim
-neovim-remote
 numpy
 pandas
 pyright
@@ -20,6 +18,9 @@ requests
 scikit-learn
 scipy
 tqdm
+polars
+ruff
+ruff-lsp
 )
 
 # install packages only on user level
