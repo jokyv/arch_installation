@@ -6,12 +6,12 @@ set -o errexit # exit when command fails
 # install all python packages using pip
 pip_packages = (
 black
-flake8
 ipython
 jedi
 matplotlib
 matplotlib-inline
 numpy
+seaborn
 pandas
 pyright
 requests
@@ -21,6 +21,7 @@ tqdm
 polars
 ruff
 ruff-lsp
+mysql-connector-python
 )
 
 # install packages only on user level
