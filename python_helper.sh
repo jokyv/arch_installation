@@ -5,23 +5,27 @@ set -o errexit # exit when command fails
 
 # install all python packages using pip
 pip_packages = (
-black
 ipython
-jedi
 matplotlib
 matplotlib-inline
 numpy
 seaborn
 pandas
-pyright
 requests
 scikit-learn
 scipy
 tqdm
+mysql-connector-python
 polars
+# use pylsp together with ruff and black
+python-lsp-server
+python-lsp-ruff
+python-lsp-black
 ruff
 ruff-lsp
-mysql-connector-python
+black
+pyright
+jedi
 )
 
 # install packages only on user level

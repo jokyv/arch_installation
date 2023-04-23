@@ -1,19 +1,16 @@
 # Arch installation
 
 ### TODOs for v1.0
-- /etc/pacman.conf save it to your dotfiles!
-- where to put user-dirs.dirs?
-- find the best mirrors to download packages
-```
-reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
-```
+- [ ] /etc/pacman.conf save it to your dotfiles!
+- [ ] where to put user-dirs.dirs?
+- [ ] find the best mirrors to download packages
+- [ ] move to ruff-lsp with pyright instead of pylsp with 3rd party plugins
 
-#### Download Arch ISO from the below link:
+### Download Arch ISO from the below link:
 https://archlinux.org/download/
 
-#### Use the below command to write the ISO into a USB drive.
+### Use the below command to write the ISO into a USB drive.
 - Instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
-
 ```
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 ````
@@ -28,6 +25,17 @@ station wlan0 connect <wifi name>
 exit
 pacman -Sy
 ```
+
+### OPTION 1
+```
+archinstall
+```
+
+```
+reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+### OPTION 2
 
 #### Check the time is correct
 ```
@@ -103,7 +111,7 @@ cat /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 ```
 
-### WARNING, i need to generate the public key!
+### *WARNING*, i need to generate the public key!
 #### Download help installation repo into your HOME directory:
 ```
 cd ~
@@ -161,7 +169,8 @@ sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
 
-#### pacman 
+## Misc
+#### pacman commands
 ```
 man pacman
 pacman -S # sync for install or update packages
