@@ -1,10 +1,13 @@
 # Arch installation
 
 ### TODOs for v1.0
+- [ ] Move to [Hyprland](https://github.com/hyprwm/Hyprland)
+- [ ] Move to [pyenv](https://github.com/pyenv/pyenv)
 - [ ] /etc/pacman.conf save it to your dotfiles!
 - [ ] where to put user-dirs.dirs?
 - [ ] find the best mirrors to download packages
-- [ ] move to ruff-lsp with pyright instead of pylsp with 3rd party plugins
+- [x] create alias for pip update all packages
+- [x] move to python-lsp-server with ruff and black as plugins
 
 ### Download Arch ISO from the below link:
 https://archlinux.org/download/
