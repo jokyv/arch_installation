@@ -5,13 +5,13 @@ set -o errexit # exit when command fails
 
 pip_packages=(
   # data analysis libraries
+  ipython
   polars
-  numpy
   pandas
   pyarrow
+  numpy
   scikit-learn
   scipy
-  ipython
 
   # plotting libraries
   matplotlib
@@ -33,7 +33,7 @@ pip_packages=(
   requests
   tqdm
   mysql-connector-python
-
+  # financetoolkit
 )
 
 install_pyenv() {
