@@ -1,6 +1,7 @@
 # Arch installation
 
-### TODOs for v1.0
+## TODOs for v1.0
+
 - [ ] Move to [Hyprland](https://github.com/hyprwm/Hyprland)
 - [ ] Move to [pyenv](https://github.com/pyenv/pyenv)
 - [ ] /etc/pacman.conf save it to your dotfiles!
@@ -10,15 +11,18 @@
 - [x] move to python-lsp-server with ruff and black as plugins
 
 ### Download Arch ISO from the below link:
-https://archlinux.org/download/
+
+- https://archlinux.org/download/
 
 ### Use the below command to write the ISO into a USB drive.
+
 - Instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
 ```
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 ````
 
 #### First check if you have internet
+
 - if no internet follow instructions on this [link](https://wiki.archlinux.org/index.php/Iwd#iwctl)
 ```
 ping google.com
@@ -30,6 +34,7 @@ pacman -Sy
 ```
 
 ### OPTION 1
+
 ```
 archinstall
 ```

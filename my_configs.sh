@@ -88,24 +88,5 @@ echo " "
 echo ":: Tmux"
 ln -s ~/dot/tmux/ ~/.config/
 
-# # Miniconda
-# echo " "
-# echo ":: Miniconda "
-# echo "...downloading miniconda and installing it"
-# wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-# sh ~/miniconda.sh -b -f -p $HOME/mconda
-# rm ~/miniconda.sh
-# echo "...cloning my packages into mconda lib"
-# echo "pres [ENTER] key to continue"
-# read y
-# git clone git@github.com:jokyv/jokyv.git ~/mconda/lib/python3.9/site-packages/
-# git clone git@github.com:jokyv/jokyv_ml.git ~/mconda/lib/python3.9/site-packages/
-# echo "...ipython configurations"
-# cd ~/.ipython/profile_default
-# ipython profile create
-# cd profile_default
-# nvim ipython_config.py
-# echo "uncomment autoindent and make it false"
-
 echo " "
 echo "...all configurations are now done!"
