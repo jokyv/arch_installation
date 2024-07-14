@@ -3,7 +3,7 @@
 ## TODOs for v1.0
 
 - [ ] Move to [Hyprland](https://github.com/hyprwm/Hyprland)
-- [ ] Move to [pyenv](https://github.com/pyenv/pyenv)
+- [x] Move to [pyenv](https://github.com/pyenv/pyenv)
 - [ ] /etc/pacman.conf save it to your dotfiles!
 - [ ] where to put user-dirs.dirs?
 - [ ] find the best mirrors to download packages
@@ -43,103 +43,10 @@ archinstall
 reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+
 ### OPTION 2
 
-#### Check the time is correct
-```
-timedatectl set-ntp true
-timedatectl status
-date
-```
-
-#### Partition the disk using cgdisk.
-```
-lsblk
-cgdisk /dev/nvme0n1
-# delete any partitions you do not need
-# select 'free space' and...
-NEW - ENTER - 300MB - ef00 - efilinux - ENTER
-NEW - ENTER - ENTER - 8300 - root - ENTER
-WRITE - ENTER - yes
-QUIT - ENTER
-lsblk
-```
-
-#### Partition the disk using gdisk 
-- preferred method
-```
-lsblk
-gdisk /dev/nvme0n1
-n - ENTER - ENTER - +250M - ef00  # for EFI
-n - ENTER - ENTER -  +16G - 8200  # for swap partition
-n - ENTER - ENTER -  +20G - ENTER # for root partition
-n - ENTER - ENTER - ENTER - ENTER # home partition
-w # to write the changes
-y # to confirm with the changes
-lsblk
-```
-
-#### Format the partitions
-```
-mkfs.vfat /dev/nvme0n1p1 - ENTER
-# OR
-mkfs.fat -F32 /dev/nvme0n1p1 - ENTER
-
-mkswap /dev/nvme0n1p2 - ENTER
-swapon /dev/nvme0n1p2 - ENTER
-
-mkfs.ext4 /dev/nvme0n1p3 - ENTER
-mkfs.ext4 /dev/nvme0n1p4 - ENTER
-lsblk
-```
-
-#### Mount the partitions
-```
-mount /dev/nvme0n1p3 /mnt # installation directory
-mkdir -p /mnt/boot/efi
-mkdir /mnt/home
-mount /dev/nvme0n1p1 /mnt/boot/efi
-mount /dev/nvme0n1p4 /mnt/home
-lsblk
-```
-
-#### Install the absolute basic packages
-```
-pacstrap /mnt base linux linux-firmware git neovim amd-ucode
-```
-
-#### Generate the FSTAB file with 
-```
-genfstab -U /mnt >> /mnt/etc/fstab
-cat /mnt/etc/fstab
-```
-
-#### Then chroot into /mnt
-```
-arch-chroot /mnt /bin/bash
-```
-
-### *WARNING*, i need to generate the public key!
-#### Download help installation repo into your HOME directory:
-```
-cd ~
-git clone git@github.com:jokyv/arch_installation.git
-cd arch_installation
-ls -l # check if you need to chmod the scripts
-chmod +x arch_helper.sh
-./arch_helper.sh
-```
-
-#### Final steps
-```
-exit
-umount -a
-umount -R /mnt
-reboot
-```
-
-#### If no internet after rebooting
-- follow this [link](https://wiki.archlinux.org/index.php/NetworkManager)
+[Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/manual-arch-configuration.md)
 
 #### Install rust via rustup and all rust apps via cargo
 ```
@@ -179,7 +86,7 @@ delete the swapfile line in fstab file
 
 ## Misc
 #### pacman commands
-```
+```bash
 man pacman
 pacman -S # sync for install or update packages
 pacman -R # remove packages
