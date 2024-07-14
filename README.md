@@ -46,7 +46,7 @@ reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 
 ### OPTION 2
 
-[Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/manual-arch-configuration.md)
+[Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/Manual-Arch-Configuration)
 
 #### Install rust via rustup and all rust apps via cargo
 ```
