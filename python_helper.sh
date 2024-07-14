@@ -21,13 +21,7 @@ pip_packages=(
   # IDE libraries
   # use pylsp together with ruff and black
   python-lsp-server
-  python-lsp-ruff
-  python-lsp-black
   ruff
-  ruff-lsp
-  black
-  pyright
-  jedi
 
   # misc libraries
   requests
@@ -49,7 +43,7 @@ install_packages() {
     echo ""
     echo "::checking package $pip_package"
     echo ""
-    pip install --user $pip_package
+    uv pip install --user $pip_package
   done
 }
 

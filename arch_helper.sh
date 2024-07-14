@@ -46,6 +46,7 @@ install_packages() {
     dnsmasq 
     dnsutils 
     dosfstools 
+    dunst
     edk2-ovmf 
     efibootmgr 
     feh 
