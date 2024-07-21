@@ -1,15 +1,5 @@
 # Arch installation
 
-## TODOs for v1.0
-
-- [ ] Move to [Hyprland](https://github.com/hyprwm/Hyprland)
-- [x] Move to [pyenv](https://github.com/pyenv/pyenv)
-- [ ] /etc/pacman.conf save it to your dotfiles!
-- [ ] where to put user-dirs.dirs?
-- [ ] find the best mirrors to download packages
-- [x] create alias for pip update all packages
-- [x] move to python-lsp-server with ruff and black as plugins
-
 ### Download Arch ISO from the below link:
 
 - https://archlinux.org/download/
@@ -43,6 +33,11 @@ archinstall
 reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
 ```
 
+#### Depedencies
+
+```
+niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim swappy waybar alacritty swaybg firefox brave-bin
+```
 
 ### OPTION 2
 
