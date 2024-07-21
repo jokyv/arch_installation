@@ -43,19 +43,19 @@ niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim
 
 [Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/Manual-Arch-Configuration)
 
-#### Install rust via rustup and all rust apps via cargo
+## Install rust via rustup and all rust apps via cargo
 ```
 cd arch_installation
 ./rust_helper.sh
 ```
 
-#### Install all python libraries using pip
+## Install all python libraries using pip
 ```
 cd arch_installation
 ./python_helper.sh
 
 ```
-#### Install xorg, bspwm, sxhkd, polybar and useful apps and configurations
+## Install wm applications and my configs
 ```
 cd arch_installation
 ./my_configs.sh
@@ -79,8 +79,9 @@ sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
 
-## Misc
-#### pacman commands
+
+#### Useful pacman commands
+
 ```bash
 man pacman
 pacman -S # sync for install or update packages
@@ -106,5 +107,5 @@ pacman -Qm # all programs installed via the AUR
 pacman -Qdt # dependencies that my system doesnt need anymore - most of time :)
 pacman -Qs neo # searches something with neo for local packages
 
-sudo nvim /etc/pacman.conf # uncomment color and VerbosePkgLists
+sudo nvim /etc/pacman.conf # uncomment color, ParallelDownloads VerbosePkgLists
 ```
