@@ -27,8 +27,6 @@ basic_configs() {
 
 install_packages() {
     pacman=(
-    #sudo
-    #visudo
     acpi 
     acpi_call 
     acpid 
@@ -39,7 +37,6 @@ install_packages() {
     bluez 
     bluez-utils 
     bridge-utils 
-    bspwm 
     cronie 
     cups 
     dialog 
@@ -49,11 +46,8 @@ install_packages() {
     dunst
     edk2-ovmf 
     efibootmgr 
-    feh 
     firefox 
     firewalld 
-    flameshot 
-    flatpak 
     fzf 
     grub 
     gvfs 
@@ -61,21 +55,16 @@ install_packages() {
     hplip 
     inetutils 
     ipset 
-    lazygit
     linux-headers 
     mtools 
     network-manager-applet 
     networkmanager 
     nfs-utils 
-    nitrogen 
-    nodejs
-    npm
     nss-mdns 
     ntfs-3g
     openbsd-netcat 
     openssh 
     os-prober 
-    picom 
     pulseaudio 
     pulseaudio-alsa 
     python
@@ -83,10 +72,8 @@ install_packages() {
     qemu 
     qemu-arch-extra 
     reflector 
-    rsync 
     sof-firmware 
     sxhkd
-    terminus-font
     tlp 
     tmux 
     vde2 
@@ -94,9 +81,20 @@ install_packages() {
     wpa_supplicant 
     xdg-user-dirs 
     xdg-utils 
-    xorg 
-    xorg-server 
-    xorg-xinit 
+    # rust based apps
+    alacritty
+    atuin
+    fd
+    ripgrep
+    bat
+    starship
+    tokei
+    git-delta
+    taplo-cli
+    eza
+    typos
+    git-cliff
+    skim
     )
 
     sudo pacman -S ${pacman[@]}

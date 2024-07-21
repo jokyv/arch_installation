@@ -7,6 +7,7 @@ pip_packages=(
   # data analysis libraries
   ipython
   polars
+  pydantic
   pandas
   pyarrow
   numpy
@@ -19,14 +20,19 @@ pip_packages=(
   seaborn
 
   # IDE libraries
-  # use pylsp together with ruff and black
+  # use pylsp together with ruff
   python-lsp-server
   ruff
+  uv
 
   # misc libraries
   requests
   tqdm
   mysql-connector-python
+  rich
+  pip
+  fastapi
+  uvicorn
   # financetoolkit
 )
 
@@ -48,7 +54,8 @@ install_packages() {
 }
 
 main() {
-  install_pyenv
+  # no need this anymore env managed using uv
+  # install_pyenv
   install_packages
 }
 

@@ -7,4 +7,4 @@ set -o errexit # exit when command fails
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 # rust most frequently used packages
-cargo install atuin cargo-cache fd-find ripgrep bat starship tokei cargo-update paru git-delta taplo-cli trashy eza typos-cli dprint git-cliff inlyne skim
+cargo install cargo-cache cargo-update trashy dprint
