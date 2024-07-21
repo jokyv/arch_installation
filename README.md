@@ -46,7 +46,7 @@ niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim
 ## Niri settings
 
 Make a link to wallpaper:
-`ln -sf ~/pics/wallpapepers/purple_view.png ~/.config/niri/wallpaper`
+`ln -sf ~/pics/wallpapers/purple_view.png ~/.config/niri/wallpaper`
 
 Needed services:
 ```console
