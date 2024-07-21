@@ -43,6 +43,24 @@ niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim
 
 [Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/Manual-Arch-Configuration)
 
+## Niri settings
+
+Make a link to wallpaper:
+`ln -sf ~/pics/wallpapepers/purple_view.png ~/.config/niri/wallpaper`
+
+Needed services:
+```console
+mkdir -p                                               ~/.config/systemd/user/niri.service.wants
+ln -s ~/.config/systemd/user/cliphist.service          ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/darkman.service           ~/.config/systemd/user/niri.service.wants/
+ln -s /usr/lib/systemd/user/mako.service               ~/.config/systemd/user/niri.service.wants/
+ln -s /usr/lib/systemd/user/gnome-polkit-agent.service ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/playctld.service          ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/swaybg.service            ~/.config/systemd/user/niri.service.wants/
+ln -s /usr/lib/systemd/user/waybar.service             ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/wlsunset.service          ~/.config/systemd/user/niri.service.wants/
+ln -s ~/.config/systemd/user/ydotool.service           ~/.config/systemd/user/niri.service.wants/
+```
 ## Install rust via rustup and all rust apps via cargo
 ```
 cd arch_installation
