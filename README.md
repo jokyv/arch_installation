@@ -39,7 +39,9 @@ archinstall
 
 ![Arch installation](images/archinstallation.png)
 
-#### Depedencies
+- At the end just `reboot`.
+
+#### Depedencies for Niri wm
 
 ```
 niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim swappy waybar alacritty swaybg firefox brave-bin
@@ -49,44 +51,31 @@ niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim
 
 [Manual Arch Configuration](https://github.com/jokyv/arch_installation/wiki/Manual-Arch-Configuration)
 
-## Niri settings
+## Install rust via rustup and rust apps via cargo
 
-Make a link to wallpaper:
-`ln -sf ~/pics/wallpapers/purple_view.png ~/.config/niri/wallpaper`
-
-Needed services:
-```console
-mkdir -p                                               ~/.config/systemd/user/niri.service.wants
-ln -s ~/.config/systemd/user/cliphist.service          ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/darkman.service           ~/.config/systemd/user/niri.service.wants/
-ln -s /usr/lib/systemd/user/mako.service               ~/.config/systemd/user/niri.service.wants/
-ln -s /usr/lib/systemd/user/gnome-polkit-agent.service ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/playctld.service          ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/swaybg.service            ~/.config/systemd/user/niri.service.wants/
-ln -s /usr/lib/systemd/user/waybar.service             ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/wlsunset.service          ~/.config/systemd/user/niri.service.wants/
-ln -s ~/.config/systemd/user/ydotool.service           ~/.config/systemd/user/niri.service.wants/
-```
-## Install rust via rustup and all rust apps via cargo
 ```
 cd arch_installation
 ./rust_helper.sh
 ```
 
-## Install all python libraries using pip
-```
-cd arch_installation
-./python_helper.sh
-
-```
 ## Install wm applications and my configs
+
 ```
 cd arch_installation
 ./my_configs.sh
 ```
 
-#### How to create a swap file manually
+## Install all python libraries using uv
+
 ```
+cd arch_installation
+./python_helper.sh
+
+```
+
+#### How to create a swap file manually
+
+```bash
 # always create a swap file as RAM can cache more data, put it in home directory.
 sudo dd if=/dev/zero of=/swapfile bs=1M count=1024000 status=progress
 sudo chmod 600 /swapfile
@@ -102,7 +91,6 @@ sudo swapoff -v /swapfile
 sudo rm /swapfile
 delete the swapfile line in fstab file
 ```
-
 
 #### Useful pacman commands
 
