@@ -1,20 +1,20 @@
 # Arch installation
 
-- Download Arch ISO from the following [link](https://archlinux.org/download/)
+- Download Arch ISO from the following [link](https://archlinux.org/download/).
 - Write the ISO into a USB drive using the command:
 
 ```console
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 ````
 
-- following instructions on [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
+- For more detailed instructions on [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
 - Check if you have internet
 
 ```console
 ping -c 3 archlinux.org
 ```
 
-- if no internet follow instructions on this [link](https://wiki.archlinux.org/index.php/Iwd#iwctl)
+- if no internet follow instructions on this [link](https://wiki.archlinux.org/index.php/Iwd#iwctl).
 
 ```bash
 iwctl
@@ -23,21 +23,21 @@ station wlan0 connect <wifi name>
 exit
 ```
 
-- Enable parallel by uncommenting the ParallelDOwnloads variable.
+- Enable parallel downloads by uncommenting the ParallelDOwnloads variable.
 
 ```console
 nano /etc/pacman.conf
 ```
 
-### OPTION 1
+### Installation - Option 1
 
 ```console
 archinstall
 ```
 
-```
-reflector -c Singapore -a 6 --sort rate --save /etc/pacman.d/mirrorlist
-```
+- Follow on screen instructions with end outcome like the below:
+
+![Arch installation](images/archinstallation.png)
 
 #### Depedencies
 
