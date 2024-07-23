@@ -1,31 +1,37 @@
 # Arch installation
 
-### Download Arch ISO from the below link:
+- Download Arch ISO from the following [link](https://archlinux.org/download/)
+- Write the ISO into a USB drive using the command:
 
-- https://archlinux.org/download/
-
-### Use the below command to write the ISO into a USB drive.
-
-- Instructions can be found on this [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
-```
+```console
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
 ````
 
-#### First check if you have internet
+- following instructions on [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
+- Check if you have internet
+
+```console
+ping -c 3 archlinux.org
+```
 
 - if no internet follow instructions on this [link](https://wiki.archlinux.org/index.php/Iwd#iwctl)
-```
-ping google.com
+
+```bash
 iwctl
 device list
 station wlan0 connect <wifi name>
 exit
-pacman -Sy
+```
+
+- Enable parallel by uncommenting the ParallelDOwnloads variable.
+
+```console
+nano /etc/pacman.conf
 ```
 
 ### OPTION 1
 
-```
+```console
 archinstall
 ```
 
