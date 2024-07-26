@@ -51,10 +51,13 @@ ln -s ~/dot/bash/.bash_profile ~/
 ln -s ~/dot/alacritty ~/.config/
 ln -s ~/dot/fd ~/.config/
 ln -s ~/dot/git ~/.config/
-ln -s ~/dot/starship.toml ~/.config/
+ln -s ~/dot/starship/starship.toml ~/.config/
 
 ## Niri wm settings
 # Make a link to wallpaper:
+echo " "
+echo ":: Wallpapers and pics"
+echo "...creating pics folder and adding my wallpapers repo"
 mkdir pics
 cd pics
 git clone git@github.com:jokyv/wallpapers.git ~/pics/wallpapaers/
@@ -79,25 +82,13 @@ echo "...lets source all the config files"
 cd ~
 echo " "
 echo "...symlink my favourite fonts to ~/.local/share/"
-ln -s ~/dot/fonts/ ~/.local/share/
+# ln -s ~/dot/fonts/ ~/.local/share/
 
 # personal projects
 cd ~
 echo " "
 echo "...adding all personal-private repos"
 git clone git@github.com:jokyv/notes.git ~/repos/
-
-# wallpapers and pics
-cd ~
-echo " "
-echo ":: Wallpapers and pics"
-echo "...creating pics folder and adding my wallpapers repo"
-mkdir pics
-git clone git@github.com:jokyv/wallpapers.git ~/pics/
-echo " "
-echo "add work repos manually if you want"
-echo "press [ENTER] key to continue..."
-read y
 
 ## OPTIONAL INSTALLATIONS
 
