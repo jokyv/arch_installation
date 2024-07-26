@@ -30,36 +30,43 @@ install_packages() {
     acpi 
     acpi_call 
     acpid 
+    alacritty 
     alsa-utils 
     avahi 
+    base-devel # important
     bash-completion 
-    base-devel     
     bluez 
     bluez-utils 
     bridge-utils 
+    cliphist
     cronie 
     cups 
     dialog 
     dnsmasq 
     dnsutils 
     dosfstools 
-    dunst
     edk2-ovmf 
-    efibootmgr 
+    efibootmgr # important
     firefox 
     firewalld 
+    fuzzel
     fzf 
-    grub 
+    grim 
+    grub # important
     gvfs 
     gvfs-smb 
     hplip 
     inetutils 
     ipset 
     linux-headers 
+    ly 
+    mako 
     mtools 
+    nautilus 
     network-manager-applet 
-    networkmanager 
+    networkmanager # important unless we use iwd
     nfs-utils 
+    niri
     nss-mdns 
     ntfs-3g
     openbsd-netcat 
@@ -73,28 +80,38 @@ install_packages() {
     qemu-arch-extra 
     reflector 
     sof-firmware 
-    sxhkd
+    swappy 
+    swaybg # or swww
+    swaylock 
     tlp 
-    tmux 
     vde2 
     virt-manager 
+    waybar 
+    wl-clipboard 
+    wlogout 
     wpa_supplicant 
     xdg-user-dirs 
     xdg-utils 
+    zathura    
+    # fonts to install
+    otf-fira-mono
+    otf-font-awesome
+    ttf-fira-code
+    ttf-hack    
     # rust based apps
     alacritty
     atuin
-    fd
-    ripgrep
     bat
-    starship
-    tokei
-    git-delta
-    taplo-cli
     eza
-    typos
+    fd
     git-cliff
+    git-delta
+    ripgrep
     skim
+    starship
+    taplo-cli
+    tokei
+    typos    
     )
 
     sudo pacman -S ${pacman[@]}
@@ -108,11 +125,12 @@ install_packages() {
 grub_config() {
     grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
     grub-mkconfig -o /boot/grub/grub.cfg
+    # grub-mkconfig -o /boot/efi/EFI/arch/grub.cfg
 }
 
 enable_systems() {
-    systemctl enable NetworkManager
-    systemctl enable bluetooth
+    systemctl enable NetworkManager # for the wifi connection
+    systemctl enable bluetooth # for bluetooth
     systemctl enable cups.service
     systemctl enable sshd
     systemctl enable avahi-daemon
@@ -122,6 +140,7 @@ enable_systems() {
     systemctl enable libvirtd
     systemctl enable firewalld
     systemctl enable acpid
+    systemctl enable systemd-timesyncd.service
 }
 
 add_user() {
