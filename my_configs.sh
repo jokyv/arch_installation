@@ -11,17 +11,22 @@ cd ~
 mkdir repos
 cd repos
 
+# install helix editor
+git clone https://github.com/helix-editor/helix
+cd helix
+cargo install --path helix-term --locked
+
 # install paru
 sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 
-# install Paru apps
+# install paru apps
 cd ~
 echo " "
-echo "...installing brave, dprint, trashy"
-paru brave-bin dprint trashy
+echo "...installing brave, dprint, trashy, ttf-mononoki"
+paru brave-bin dprint ttf-mononoki
 
 # ssh key to github so i can download dotfiles
 echo " " 
