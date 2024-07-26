@@ -1,13 +1,15 @@
 # Arch installation
 
 - Download Arch ISO from the following [link](https://archlinux.org/download/).
+- Verify the integrity of the ISO image.
 - Write the ISO into a USB drive using the command:
 
 ```console
 dd bs=4M if=path/to/archlinux-version-x86_64.iso of=/dev/sdx conv=fsync oflag=direct status=progress
-````
+```
 
 - For more detailed instructions on [link](https://wiki.archlinux.org/title/USB_flash_installation_medium).
+- Boot computer with the USB drive plugged in.
 - Check if you have internet
 
 ```console
@@ -20,10 +22,11 @@ ping -c 3 archlinux.org
 iwctl
 device list
 station wlan0 connect <wifi name>
+# enter password to connect
 exit
 ```
 
-- Enable parallel downloads by uncommenting the ParallelDOwnloads variable.
+- Enable parallel downloads by uncommenting the ParallelDOwnloads variable at:
 
 ```console
 nano /etc/pacman.conf
@@ -39,9 +42,10 @@ archinstall
 
 ![Arch installation](images/archinstallation.png)
 
+- add basic packages such as: `git neovim amd-ucode`
 - At the end just `reboot`.
 
-#### Depedencies for Niri wm
+#### Dependencies for Niri wm
 
 ```
 niri fuzzel cliphist wl-clipboard zathura nautilus ly mako wlogout swaylock grim swappy waybar alacritty swaybg firefox brave-bin
@@ -70,7 +74,6 @@ cd arch_installation
 ```
 cd arch_installation
 ./python_helper.sh
-
 ```
 
 #### How to create a swap file manually
