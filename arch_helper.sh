@@ -92,12 +92,15 @@ install_packages() {
     wpa_supplicant 
     xdg-user-dirs 
     xdg-utils 
+    yazi
     zathura    
     # fonts to install
-    otf-fira-mono
     otf-font-awesome
-    ttf-fira-code
-    ttf-hack    
+    otf-firamono-nerd
+    ttf-firacode-nerd
+    ttf-hack-nerd
+    ttf-nerd-fonts-symbols
+    ttf-nerd-fonts-symbols-common
     # rust based apps
     alacritty
     atuin
