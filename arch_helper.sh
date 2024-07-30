@@ -102,7 +102,6 @@ install_packages() {
     ttf-nerd-fonts-symbols
     ttf-nerd-fonts-symbols-common
     # rust based apps
-    alacritty
     atuin
     bat
     eza
