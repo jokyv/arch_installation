@@ -21,35 +21,52 @@ basic_configs() {
     echo "later can change password with passwd root command"
 }
 
-#  NOTE:
-# You can add xorg to the installation packages, I usually add it at the DE or WM install script
-# You can remove the tlp package if you are installing on a desktop or vm
-
 install_packages() {
     pacman=(
-    acpi 
-    acpi_call 
-    acpid 
+    # acpi 
+    # acpi_call 
+    # acpid 
+    amd-ucode
     alsa-utils 
+    alsa-firmware
+    atuin
     avahi 
+    base
     base-devel # important
     bash-completion 
+    bash-language-server
+    bat
+    blueman
     bluez 
     bluez-utils 
     bridge-utils 
+    chrono-date
     cliphist
+    cmake
     cronie 
     cups 
+    discord
+    htop
+    obsidian
+    pavucontrol
+    slurp
     dialog 
     dnsmasq 
     dnsutils 
     dosfstools 
     edk2-ovmf 
     efibootmgr # important
+    eza
+    wget
+    wireless_tools
+    fd
     firefox 
     firewalld 
     fuzzel
     fzf 
+    git-cliff
+    git-delta
+    github-cli
     grim 
     grub # important
     gvfs 
@@ -61,12 +78,14 @@ install_packages() {
     linux-headers 
     ly 
     mako 
+    marksman
     mtools 
     nautilus 
     network-manager-applet 
     networkmanager # important unless we use iwd
     nfs-utils 
     niri
+    nix
     nss-mdns 
     ntfs-3g
     openbsd-netcat 
@@ -76,44 +95,42 @@ install_packages() {
     pulseaudio-alsa 
     python
     python-pip
+    python-rich
     qemu 
     qemu-arch-extra 
     reflector 
+    ripgrep
+    skim
     sof-firmware 
+    starship
     swappy 
     swaybg # or swww
     swaylock 
+    taplo-cli
     tlp 
+    tokei
+    typos    
+    uv
     vde2 
     virt-manager 
+    vscode-json-languageserver
     waybar 
     wl-clipboard 
     wlogout 
     wpa_supplicant 
     xdg-user-dirs 
     xdg-utils 
+    yaml-language-server
     yazi
     zathura    
     # fonts to install
+    awesome-terminal-fonts
     otf-font-awesome
     otf-firamono-nerd
     ttf-firacode-nerd
     ttf-hack-nerd
     ttf-nerd-fonts-symbols
     ttf-nerd-fonts-symbols-common
-    # rust based apps
-    atuin
-    bat
-    eza
-    fd
-    git-cliff
-    git-delta
-    ripgrep
-    skim
-    starship
-    taplo-cli
-    tokei
-    typos    
     )
 
     sudo pacman -S ${pacman[@]}
