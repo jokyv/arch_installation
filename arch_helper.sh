@@ -30,7 +30,6 @@ install_packages() {
     acpi 
     acpi_call 
     acpid 
-    alacritty 
     alsa-utils 
     avahi 
     base-devel # important
@@ -58,6 +57,7 @@ install_packages() {
     hplip 
     inetutils 
     ipset 
+    kitty
     linux-headers 
     ly 
     mako 
