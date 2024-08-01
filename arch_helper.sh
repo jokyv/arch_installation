@@ -60,6 +60,7 @@ install_packages() {
     wget
     wireless_tools
     fd
+    fastfetch
     firefox 
     firewalld 
     fuzzel
