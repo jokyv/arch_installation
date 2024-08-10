@@ -106,6 +106,7 @@ pacman -Q # look for local packages
 pacman -S neovim # to install neovim
 pacman -Sy # only sync your database
 pacman -Syu # sync and update your programs - recommended
+pacman -Syyu # passing two -y flags forces pacman to refresh package list
 pacman -Syuw # sync and download the programs but doesnt install
 pacman -Ss neo # search for any program that is available and that has 'neo' 
 

@@ -46,7 +46,7 @@ install_packages() {
     cronie 
     cups 
     discord
-    htop
+    btop
     obsidian
     pavucontrol
     slurp
@@ -123,6 +123,7 @@ install_packages() {
     yaml-language-server
     yazi
     zathura    
+
     # fonts to install
     awesome-terminal-fonts
     otf-font-awesome
