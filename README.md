@@ -1,3 +1,7 @@
+> [!IMPORTANT]
+> This repo has been archived!!
+> Follow the new version at [link](https://github.com/jokyv/dotfiles)
+
 # Arch installation
 
 - Download Arch ISO from the following [link](https://archlinux.org/download/).
